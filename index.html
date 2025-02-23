@@ -6,9 +6,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Gerador de senha</title>
 </head>
 <body>
     <main>
@@ -18,12 +21,26 @@
             </p>
         </section>
   
-        
+        <section class="box">
+            <div class="password">
+                <div class="text">
+                    <input type="text" name="password" id="password">
+                    <div class="actions">
+                        <button id="copy-1">
+                            <img src="copy.svg" width="42">
+                        </button>
+                        <button id="renew">
+                            <img src="renew.svg" width="42">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <input type="text" name="password" id="password">
+        
         <input type="range" name="password-length" id="password-length" value="16" min="4" max="64">
 
-        <button id="copy">Copiar senha</button>
+        <button id="copy-2">Copiar senha</button>
     </main>
 
     <script>
@@ -48,7 +65,8 @@
         }
 
         function copy() {
-            navigator.clipboard.writeText(inputEl.value)
+            navigator.clipboard.writeText(inputEl.value);
+            alert(" Senha Copiado para a área de tranferência ");
         }
 
         const passwordLengthEl = document.querySelector("#password-length") 
@@ -58,8 +76,8 @@
             generatePassword()
         })
 
-        const copyButtonEl = document.querySelector("#copy")
-        copyButtonEl.addEventListener("click", copy)
+        document.querySelector("#copy-1").addEventListener("click", copy);
+        document.querySelector("#copy-2").addEventListener("click", copy);
 
         generatePassword()
     </script>
