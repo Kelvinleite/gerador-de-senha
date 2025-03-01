@@ -16,7 +16,7 @@
 <body>
     <main>
         <section class="hero">
-            <h1 class="title"> Gerado de senha</h1>
+            <h1 class="title"> Gerador de senha</h1>
             <p class="subtitle">utilize o nosso gerador online para criar uma senha forte e segura.
             </p>
         </section>
@@ -36,7 +36,9 @@
                 </div>
             </div>
             <div class="security-indicator">
-                <div id="security-indicator-bar" class="bar" style="width: 90%;">
+                <div id="security-indicator-bar" 
+                class="bar critical" 
+                style="width: 100%;">
                 </div>
             </div>
         </section>
@@ -83,12 +85,38 @@
 
     <script>
         const inputEl = document.querySelector("#password")
+        const upperCaseCheckEl = document.querySelector("#uppercase-check")
+        const numberCheckEl = document.querySelector("#numbers-check")
+        const symbolCheckEl = document.querySelector("#symbol-check")
+        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar")
+
 
         let passwordLength = 16
         
         
         function generatePassword() {
-            const chars = "abcdefgghjkmnpqrstuvwxyzABCDEGFGHJKLMNPQRSTTUVWXYZ123456789?!@&*()[]"
+            let chars = "abcdefghjkmnpqrstuvwxyz"
+
+            const upperCaseChars = "ABCDEGFGHJKLMNPQRSTTUVWXYZ"
+            const numberChars = "123456789"
+            const symbolChars = "?!@&*()[]"
+            
+            if(upperCaseCheckEl.checked) {
+                chars += upperCaseChars
+            }
+
+            if(numberCheckEl.checked) {
+                chars += numberChars
+            }
+
+            if(symbolCheckEl.checked) {
+                chars += symbolChars
+            }
+            
+
+
+            
+
             let password = ""
 
             for (let i = 0; i < passwordLength; i++){
@@ -98,8 +126,20 @@
 
             
             inputEl.value = password
+            calculateQuality()
+
 
         
+        }
+
+        function calculateQuality() {
+            const percent = Math.round((passwordLength / 64) * 25 + (upperCaseCheckEl.checked ? 15 :0) +
+            (numberCheckEl.checked ? 25 : 0) + (symbolCheckEl.checked ? 35 : 0 )
+            )
+
+            console.log(percent)
+
+            securityIndicatorBarEl.style.width = `${percent}%`
         }
 
         function copy() {
@@ -108,11 +148,15 @@
         }
 
         const passwordLengthEl = document.querySelector("#password-length") 
-        passwordLengthEl.addEventListener ("input", function () {
+            passwordLengthEl.addEventListener ("input", function () {
             passwordLength = passwordLengthEl.value
-    
+             document.querySelector('#password-length-text').innerText = passwordLength     
             generatePassword()
         })
+        upperCaseCheckEl.addEventListener("click",generatePassword)
+        numberCheckEl.addEventListener("click",generatePassword)
+        symbolCheckEl.addEventListener("click",generatePassword)
+
 
         document.querySelector("#copy-1").addEventListener("click", copy);
         document.querySelector("#copy-2").addEventListener("click", copy);
