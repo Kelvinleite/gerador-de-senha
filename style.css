@@ -23,6 +23,7 @@ main {
 
 .hero .title {
     font-size: 2rem;
+    color: #27ae60;
     font-weight: bold;
     padding-bottom: 1.5rem;
 }
@@ -78,6 +79,7 @@ border: none;
 cursor: pointer;
 opacity: 0.7;
 transition: opacity 0.2s;
+
 }
 
 .security-indicator {
@@ -150,7 +152,7 @@ transition: opacity 0.2s;
     width: 25px;
     height: 25px;
     border-radius: 25px;
-    background: #9b51e0;
+    background: #27ae60;
     cursor: pointer;
 }
 .customize .password-length .slider::-moz-range-thumb {
@@ -159,7 +161,7 @@ transition: opacity 0.2s;
     width: 25px;
     height: 25px;
     border-radius: 25px;
-    background: #9b51e0;
+    background: #27ae60;
     cursor: pointer;
 }
 
@@ -196,7 +198,7 @@ transition: opacity 0.2s;
     background-color: #cccccc;
 }
 .checkbox-container input:checked ~ .checkmark {
-    background-color: #9b51e0;
+    background-color: #27ae60;
 }
 
 .checkbox-container .checkmark:after {
@@ -220,7 +222,7 @@ transition: opacity 0.2s;
 }
 
 .submit button {
-    background-color: #bb6bd9;
+    background-color: #27ae60;
     font-size: 1.375rem;
     color: #fff;
     border: none;border-radius: 8px;
@@ -229,5 +231,25 @@ transition: opacity 0.2s;
     transition: all 0.2s;
 }
 .submit button:hover {
-    background-color: #9b51e0;
+    background-color: #27ae60;
+}
+@media only screen and (max-width: 480px) {
+    .password{
+        padding: 1rem;
+    }
+    .password .text input {
+        font-size:1.2rem;
+    }
+    .password .text input.font-sm {
+        font-size: 1.2rem;
+    }
+    .password .text input.font-xs {
+        font-size: 1rem;
+    }
+    .password .text input.font-xxs {
+        font-size: 1rem;
+    }
+    .password .actions img {
+        width: 24px;
+    }
 }
